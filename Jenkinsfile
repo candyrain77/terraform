@@ -60,8 +60,8 @@ try {
 
   if (env.BRANCH_NAME == 'master') {
 
-    // Run terraform apply
-    stage('apply') {
+    // Run terraform destroy
+    stage('destroy') {
       node {
         withCredentials([[
           $class: 'AmazonWebServicesCredentialsBinding',
@@ -70,7 +70,7 @@ try {
           secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) {
           ansiColor('xterm') {
-            sh 'terraform apply -auto-approve'
+            sh 'terraform destroy -auto-approve'
           }
         }
       }
