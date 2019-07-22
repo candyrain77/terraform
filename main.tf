@@ -10,6 +10,11 @@ terraform {
   }
 }
 
+# Use AWS Terraform provider
+provider "aws" {
+  region = "eu-west-1"
+}
+
 module "vpc_1" {
   source = "./modules/network/vpc"
   
